@@ -19,6 +19,13 @@ const inputValue = 'place'; //search value
   });
   console.log('Page opened');
 
+  // Click ELements and Input Text
+  await page.waitForSelector('yt-icon-button[id="guide-button"]', { visible: true }); // Wait for more button to be visible
+  await page.click('yt-icon-button[id="guide-button"]'); // Click more button
+
+  await page.waitForSelector('a[title="Home"]', { visible: true }); // Wait for home button to be visible
+  await page.click('a[title="Home"]'); // Click home button
+
   await page.waitForSelector('input[name="search_query"]', { visible: true }); // Wait for search box to be visible
   await page.click('input[name="search_query"]'); // Click search box
 
@@ -35,7 +42,7 @@ const inputValue = 'place'; //search value
   });
 
   console.log('First video title:', firstVideoTitle);
-  
+
 // Save to JSON file
     const data = {
     keyword: inputValue,
@@ -51,6 +58,6 @@ const inputValue = 'place'; //search value
 
   console.log('Saved to youtube_result.json');
 
-//   Close browser
+// Close browser
   await browser.close();
 })();
